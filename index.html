@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SCP WebApp</title>
 
   <!-- Manifest für PWA -->
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="apple-mobile-web-app-title" content="SCP WebApp" />
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="SCP WebApp">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
   <style>
-    /* Grundfarben */
     body {
-      background-color: #000; /* Schwarz dominierend */
-      color: #fff; /* Weißer Text */
-      font-family: 'Courier New', Courier, monospace; /* SCP Akten-Stil */
+      background-color: #000;
+      color: #fff;
+      font-family: 'Courier New', Courier, monospace;
       margin: 0;
       padding: 0;
     }
@@ -28,33 +25,32 @@
       max-width: 900px;
       margin: 40px auto;
       padding: 20px;
-      background-color: #111; /* Dunkler Container */
+      background-color: #111;
       border-radius: 12px;
       box-shadow: 0 6px 18px rgba(255,0,0,0.3);
       text-align: center;
     }
 
-    /* Logo Emoji */
     .logo {
       font-size: 80px;
       margin-bottom: 20px;
     }
 
-    /* Warnhinweis SCP-Stil */
     .warning {
-      background-color: #220000; /* dunkles Rot */
+      background-color: #220000;
       border: 2px solid #ff0000;
       padding: 25px;
       margin: 30px auto;
-      max-width: 650px;
+      max-width: 700px;
       border-radius: 12px;
       font-weight: bold;
       color: #fff;
-      text-transform: uppercase; /* wirkt offiziell */
+      text-transform: uppercase;
       font-family: 'Courier New', Courier, monospace;
+      font-size: 1.1em;
       line-height: 1.6;
       letter-spacing: 1px;
-      box-shadow: 0 0 20px rgba(255,0,0,0.5);
+      box-shadow: 0 0 25px rgba(255,0,0,0.5);
     }
 
     .warning button {
@@ -64,16 +60,11 @@
       padding: 12px 24px;
       border-radius: 6px;
       cursor: pointer;
-      margin-top: 15px;
+      margin-top: 20px;
       font-size: 1em;
-      transition: 0.3s;
+      position: relative;
     }
 
-    .warning button:hover {
-      background-color: #cc0000;
-    }
-
-    /* Hauptbuttons */
     .button-group {
       display: none;
       margin-top: 30px;
@@ -88,14 +79,8 @@
       border-radius: 6px;
       cursor: pointer;
       font-size: 1em;
-      transition: 0.3s;
     }
 
-    .button-group button:hover {
-      background-color: #cc0000;
-    }
-
-    /* Footer */
     footer {
       text-align: center;
       margin-top: 40px;
@@ -107,14 +92,12 @@
       text-decoration: none;
       color: #fff;
       margin: 0 10px;
-      transition: color 0.3s ease;
     }
 
     footer a:hover {
       color: #ff0000;
     }
 
-    /* Responsive */
     @media (max-width: 600px) {
       .app {
         margin: 20px;
@@ -123,7 +106,7 @@
       .logo {
         font-size: 60px;
       }
-      .button-group button, .warning button {
+      .warning button, .button-group button {
         padding: 10px 20px;
         font-size: 0.9em;
       }
@@ -132,19 +115,18 @@
 </head>
 <body>
   <div class="app">
-    <!-- Logo -->
     <div class="logo">✨</div>
 
-    <!-- Warnhinweis -->
     <div class="warning" id="warning">
-      ⚠️ WARNUNG! ⚠️<br><br>
-      Sie betreten eine <strong>hochgeheime, streng überwachte Datenbank der SCP Foundation</strong>.<br>
-      Unbefugter Zugriff wird streng bestraft und kann schwerwiegende Konsequenzen nach sich ziehen.<br><br>
-      Alle Inhalte sind fiktiv, aber das Betreten erfolgt auf <strong>eigene Verantwortung</strong>.<br><br>
-      <button onclick="enterApp()">Ich habe verstanden und übernehme die Verantwortung</button>
+      WARNHINWEIS<br><br>
+      DIE DADENBANK DER FOUNDATION IST STRIKT KLASSIFIZIERT.<br>
+      UNBEFUGTER ZUGRIFF IST STRENGSTENS VERBOTEN.<br>
+      ALLE ZUGRIFFE WERDEN PROTOKOLLIERT UND KONTROLLIERT.<br>
+      ZUWIDERHANDLUNGEN ZIEHEN DISZIPLINARISCHE UND RECHTLICHE FOLGEN NACH SICH.<br><br>
+      BETRETEN ERFOLGT AUF EIGENE VERANTWORTUNG.<br><br>
+      <button id="enterButton">Drücken & Halten: 5</button>
     </div>
 
-    <!-- Hauptbereich der App -->
     <div class="button-group" id="mainButtons">
       <p>Erkunde die fiktive Datenbank der SCP Foundation:</p>
       <button onclick="alert('Feature in Arbeit! 🚧')">SCPs erkunden</button>
@@ -153,7 +135,6 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer>
     <hr>
     <a href="rechtliches/impressum.html" target="_blank">Impressum</a> |
@@ -162,15 +143,34 @@
   </footer>
 
   <script>
-    function enterApp() {
-      document.getElementById('warning').style.display = 'none';
-      document.getElementById('mainButtons').style.display = 'block';
-    }
+    let enterButton = document.getElementById("enterButton");
+    let countdown = 5;
+    let interval;
 
-    // Service Worker registrieren (optional, für PWA Offline)
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("sw.js");
-    }
+    enterButton.addEventListener("mousedown", () => {
+      enterButton.textContent = `Drücken & Halten: ${countdown}`;
+      interval = setInterval(() => {
+        countdown--;
+        enterButton.textContent = `Drücken & Halten: ${countdown}`;
+        if (countdown === 0) {
+          clearInterval(interval);
+          document.getElementById('warning').style.display = 'none';
+          document.getElementById('mainButtons').style.display = 'block';
+        }
+      }, 1000);
+    });
+
+    enterButton.addEventListener("mouseup", () => {
+      clearInterval(interval);
+      countdown = 5;
+      enterButton.textContent = `Drücken & Halten: 5`;
+    });
+
+    enterButton.addEventListener("mouseleave", () => {
+      clearInterval(interval);
+      countdown = 5;
+      enterButton.textContent = `Drücken & Halten: 5`;
+    });
   </script>
 </body>
 </html>
