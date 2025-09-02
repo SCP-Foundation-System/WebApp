@@ -1,1 +1,35 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meine Super App</title>
 
+  <!-- Manifest -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#000000" />
+
+  <!-- iOS Vollbild -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="SuperApp" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+
+  <!-- CSS einbinden -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <h1>🚀 Willkommen in meiner App!</h1>
+    <p>Das ist eine PWA im Vollbild ✨</p>
+    <button onclick="alert('Button gedrückt! 🎉')">Klick mich</button>
+  </div>
+
+  <script>
+    // Service Worker registrieren
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js");
+    }
+  </script>
+</body>
+</html>
