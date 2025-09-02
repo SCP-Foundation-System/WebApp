@@ -15,10 +15,13 @@
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Hintergrund und Textfarben */
+    /* Grundfarben */
     body {
       background-color: #000; /* Schwarz dominierend */
       color: #fff; /* Weißer Text */
+      font-family: 'Courier New', Courier, monospace; /* SCP Akten-Stil */
+      margin: 0;
+      padding: 0;
     }
 
     .app {
@@ -27,33 +30,39 @@
       padding: 20px;
       background-color: #111; /* Dunkler Container */
       border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(255,0,0,0.3); /* leicht roter Schatten */
+      box-shadow: 0 6px 18px rgba(255,0,0,0.3);
       text-align: center;
     }
 
+    /* Logo Emoji */
     .logo {
       font-size: 80px;
       margin-bottom: 20px;
     }
 
-    /* Warnhinweis */
+    /* Warnhinweis SCP-Stil */
     .warning {
-      background-color: #550000; /* dunkles Rot */
+      background-color: #220000; /* dunkles Rot */
       border: 2px solid #ff0000;
-      padding: 20px;
+      padding: 25px;
       margin: 30px auto;
-      max-width: 600px;
-      border-radius: 10px;
+      max-width: 650px;
+      border-radius: 12px;
       font-weight: bold;
       color: #fff;
+      text-transform: uppercase; /* wirkt offiziell */
+      font-family: 'Courier New', Courier, monospace;
+      line-height: 1.6;
+      letter-spacing: 1px;
+      box-shadow: 0 0 20px rgba(255,0,0,0.5);
     }
 
     .warning button {
       background-color: #ff0000;
       color: #fff;
       border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
+      padding: 12px 24px;
+      border-radius: 6px;
       cursor: pointer;
       margin-top: 15px;
       font-size: 1em;
@@ -64,6 +73,7 @@
       background-color: #cc0000;
     }
 
+    /* Hauptbuttons */
     .button-group {
       display: none;
       margin-top: 30px;
@@ -74,8 +84,8 @@
       background-color: #ff0000;
       color: #fff;
       border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
+      padding: 12px 24px;
+      border-radius: 6px;
       cursor: pointer;
       font-size: 1em;
       transition: 0.3s;
@@ -85,6 +95,7 @@
       background-color: #cc0000;
     }
 
+    /* Footer */
     footer {
       text-align: center;
       margin-top: 40px;
@@ -103,6 +114,7 @@
       color: #ff0000;
     }
 
+    /* Responsive */
     @media (max-width: 600px) {
       .app {
         margin: 20px;
@@ -112,7 +124,7 @@
         font-size: 60px;
       }
       .button-group button, .warning button {
-        padding: 8px 16px;
+        padding: 10px 20px;
         font-size: 0.9em;
       }
     }
@@ -125,8 +137,11 @@
 
     <!-- Warnhinweis -->
     <div class="warning" id="warning">
-      ⚠️ Achtung! Alle Inhalte sind fiktiv und dienen nur zu Unterhaltungszwecken.<br>
-      <button onclick="enterApp()">Ich habe verstanden, weiter zur App</button>
+      ⚠️ WARNUNG! ⚠️<br><br>
+      Sie betreten eine <strong>hochgeheime, streng überwachte Datenbank der SCP Foundation</strong>.<br>
+      Unbefugter Zugriff wird streng bestraft und kann schwerwiegende Konsequenzen nach sich ziehen.<br><br>
+      Alle Inhalte sind fiktiv, aber das Betreten erfolgt auf <strong>eigene Verantwortung</strong>.<br><br>
+      <button onclick="enterApp()">Ich habe verstanden und übernehme die Verantwortung</button>
     </div>
 
     <!-- Hauptbereich der App -->
