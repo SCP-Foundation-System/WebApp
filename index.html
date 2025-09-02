@@ -3,38 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meine Super App</title>
+  <title>SCP WebApp</title>
 
-  <!-- Manifest -->
+  <!-- Manifest für PWA -->
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#000000" />
-
-  <!-- iOS Vollbild -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="apple-mobile-web-app-title" content="SuperApp" />
-  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-title" content="SCP WebApp" />
 
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Extra Styling für Logo und Warnhinweis */
+    .logo {
+      font-size: 80px; /* Größe des Emojis wie Logo */
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .warning {
+      background-color: #ffdddd;
+      border: 2px solid #ff0000;
+      padding: 20px;
+      margin: 30px auto;
+      max-width: 600px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .button-group {
+      display: none; /* Buttons zunächst verstecken */
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .button-group button {
+      margin: 10px;
+    }
+  </style>
 </head>
 <body>
   <div class="app">
-    <h1>🚀 Willkommen in meiner App!</h1>
-    <p>Das ist eine PWA im Vollbild ✨</p>
-    <button onclick="alert('Button gedrückt! 🎉')">Klick mich</button>
+    <!-- Logo -->
+    <div class="logo">✨</div>
+
+    <!-- Warnhinweis -->
+    <div class="warning" id="warning">
+      ⚠️ Achtung! Alle Inhalte sind fiktiv und dienen nur zu Unterhaltungszwecken.<br>
+      <button onclick="enterApp()">Ich habe verstanden, weiter zur App</button>
+    </div>
+
+    <!-- Hauptbereich der App -->
+    <div class="button-group" id="mainButtons">
+      <p>Erkunde die fiktive Datenbank der SCP Foundation:</p>
+      <button onclick="alert('Feature in Arbeit! 🚧')">SCPs erkunden</button>
+      <button onclick="alert('Feature in Arbeit! 🚧')">Login als Mitarbeiter</button>
+      <button onclick="alert('Feature in Arbeit! 🚧')">Favoriten</button>
+    </div>
   </div>
 
   <!-- Footer -->
   <footer>
+    <hr>
     <a href="rechtliches/impressum.html" target="_blank">Impressum</a> |
     <a href="rechtliches/datenschutz.html" target="_blank">Datenschutz</a> |
     <a href="rechtliches/nutzungsbedingungen.html" target="_blank">Nutzungsbedingungen</a>
   </footer>
 
-
   <script>
-    // Service Worker registrieren
+    function enterApp() {
+      document.getElementById('warning').style.display = 'none';
+      document.getElementById('mainButtons').style.display = 'block';
+    }
+
+    // Service Worker registrieren (optional, für PWA Offline)
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("sw.js");
     }
