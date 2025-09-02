@@ -1,39 +1,109 @@
-/* Grundlayout */
-body {
+/* ------------------------------
+   Grundlegendes Styling
+------------------------------ */
+* {
   margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #111, #333);
-  color: white;
-  font-family: Arial, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
+body {
+  background-color: #f4f4f4;
+  color: #111;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ------------------------------
+   App Container
+------------------------------ */
 .app {
-  text-align: center;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+/* ------------------------------
+   Überschriften
+------------------------------ */
+h1, h2, h3 {
+  margin-bottom: 20px;
+  color: #222;
 }
 
 h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
+  font-size: 2em;
+  text-align: center;
 }
 
+/* ------------------------------
+   Paragraphen
+------------------------------ */
 p {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  font-size: 1em;
 }
 
-button {
+/* ------------------------------
+   Buttons
+------------------------------ */
+button, .btn {
+  display: inline-block;
   padding: 10px 20px;
-  font-size: 1rem;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
   border: none;
-  border-radius: 8px;
-  background: #00c853;
-  color: white;
+  border-radius: 6px;
   cursor: pointer;
-  transition: 0.2s;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background: #009624;
+button:hover, .btn:hover {
+  background-color: #333;
+}
+
+/* ------------------------------
+   Footer
+------------------------------ */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+}
+
+footer a {
+  text-decoration: none;
+  color: #000;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #555;
+}
+
+/* ------------------------------
+   Responsive Design
+------------------------------ */
+@media (max-width: 600px) {
+  .app {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  button, .btn {
+    padding: 8px 16px;
+    font-size: 0.9em;
+  }
 }
